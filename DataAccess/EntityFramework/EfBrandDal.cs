@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstarct;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstarct;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -7,36 +8,8 @@ using System.Text;
 
 namespace DataAccess.EntityFramework
 {
-    public class EfBrandDal : IBrandDal
+    public class EfBrandDal : EfEntityRepositoryBase<Brand, CarContext>, IBrandDal
     {
-        public void Add(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Brand entityr)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Brand Get(Expression<Func<Brand, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Brand> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Brand entity)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
