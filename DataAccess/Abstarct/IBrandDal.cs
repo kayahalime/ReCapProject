@@ -8,6 +8,6 @@ namespace DataAccess.Abstarct
 {
     public interface IBrandDal: IEntityRepository<Brand>
     {
-
+        
     }
 }
