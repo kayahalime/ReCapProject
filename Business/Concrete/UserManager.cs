@@ -1,5 +1,7 @@
 ﻿using Business.Abstarct;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstarct;
 using Entities.Concrete;
@@ -17,6 +19,7 @@ namespace Business.Concrete
             _userDal = userDal;
 
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(User user)
         {
             _userDal.Add(user);
