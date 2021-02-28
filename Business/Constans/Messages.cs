@@ -12,6 +12,8 @@ namespace Business.Constans
         public static string CarDescriptionInvalid = "Açıklama Geçersiz";
         public static string MaintenanceTime = "Sistem Bakımda";
         public static string CarsListed = "Veriler Listelendi";
+        public static string ImagesAdded = "resim eklendi";
+        public static string FailAddedImageLimit = "Resim limitine erişildi!";
 
     }
 }

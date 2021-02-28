@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\Cons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{D1E26051-1E6E-4559-B9B8-74229DD3D9BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{B0EFA8B6-0D6F-4516-8405-55E80B9DC295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{B0EFA8B6-0D6F-4516-8405-55E80B9DC295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
