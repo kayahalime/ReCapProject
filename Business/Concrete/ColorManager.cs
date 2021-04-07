@@ -35,10 +35,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Color>>(Messages.MaintenanceTime);
-            }
+           
 
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.CarsListed);
         }
@@ -47,7 +44,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == colorId));
         }
-        [ValidationAspect(typeof(ColorValidator))]
+       // [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);

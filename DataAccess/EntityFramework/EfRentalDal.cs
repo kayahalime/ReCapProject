@@ -23,14 +23,18 @@ namespace DataAccess.EntityFramework
                              on r.CarId equals c.CarId
                              join cs in context.Customers
                              on r.CustomerId equals cs.CustomerId
+                             join brd in context.Brands on c.BrandId equals brd.BrandId
+                             join usr in context.Users on cs.UserId equals usr.UserId
                              select new RentalDetailDto
                              {
                                  RentalId = r.RentalId,
                                  CarName = c.CarName,
                                  DailyPrice = c.DailyPrice,
-                                 CustomerId = cs.CustomerId,
+                                 BrandName = brd.BrandName,
                                  RentDate = r.RentDate,
-                                 ReturnDate = r.ReturnDate
+                                 ReturnDate = r.ReturnDate,
+                                 FirstName = usr.FirstName,
+                                 LastName = usr.LastName
 
                              };
                 return result.ToList();

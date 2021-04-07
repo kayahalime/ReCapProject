@@ -11,6 +11,7 @@ namespace DataAccess.Abstarct
     {
 
         List<CarDetailDto> GetCarDetails();
+        List<CarDetailDto> GetByFilter(int brandId, int colorId);
 
     }
 }

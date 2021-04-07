@@ -18,10 +18,10 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
             var result = rentalManager.GetRentalDetails();
-            foreach (var rentalDetail in result.Data)
-            {
-                Console.WriteLine(rentalDetail.RentalId + " - " + rentalDetail.CustomerId + " - " + rentalDetail.CarName + " - " + rentalDetail.DailyPrice + " - " + rentalDetail.RentDate + " - " + rentalDetail.ReturnDate);
-            }
+            //foreach (var rentalDetail in result.Data)
+            //{
+            //    Console.WriteLine(rentalDetail.RentalId + " - " + rentalDetail.CustomerId + " - " + rentalDetail.CarName + " - " + rentalDetail.DailyPrice + " - " + rentalDetail.RentDate + " - " + rentalDetail.ReturnDate);
+            //}
 
         }
 

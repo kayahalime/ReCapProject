@@ -13,6 +13,7 @@ namespace Business.Abstarct
         IDataResult<List<Car>> GetCarsByBrandId(int brandId);
         IDataResult<List<Car>> GetCarsByColorId(int colorId);
         IDataResult<List<Car>> GetByDailyPrice(long min, long max);
+        IDataResult<List<CarDetailDto>> GetByFilter(int brandId, int colorId);
         IDataResult<List<CarDetailDto>> GetCarDetails();
         IDataResult<Car> GetById(int id);
         IResult Add(Car car);
