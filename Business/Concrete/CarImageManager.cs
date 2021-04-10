@@ -23,26 +23,26 @@ namespace Business.Concrete
         {
             _carImageDal = carImageDal;
         }
-        [ValidationAspect(typeof(CarImageValidator))]
+       // [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file,CarImage carImage)
         {
-            IResult result = BusinessRules.Run(
-               CheckIfImageLimit(carImage.CarId)
-               );
+            var result = BusinessRules.Run(CheckCarImageLimit(carImage));
 
             if (result != null)
             {
                 return result;
             }
+
             carImage.ImagePath = FileHelper.AddAsync(file);
             carImage.CarImageDate = DateTime.Now;
             _carImageDal.Add(carImage);
-            return new SuccessResult(Messages.ImagesAdded);
+
+            return new SuccessResult(Messages.CarAdded);
         }
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Delete(CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CarImageDelete(carImage));
+            IResult result = BusinessRules.Run(CheckCarImageLimit(carImage));
             if (result != null)
             {
                 return result;
@@ -102,12 +102,11 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        private IResult CheckIfImageLimit(int carid)
+        private IResult CheckCarImageLimit(CarImage carImage)
         {
-            var carImagecount = _carImageDal.GetAll(p => p.CarId == carid).Count;
-            if (carImagecount >= 5)
+            if (_carImageDal.GetAll(c => c.CarId == carImage.CarId).Count >= 5)
             {
-                return new ErrorResult(Messages.FailAddedImageLimit);
+                return new ErrorResult(Messages.FailedCarImageAdd);
             }
 
             return new SuccessResult();

@@ -14,7 +14,7 @@ namespace DataAccess.EntityFramework
 {
     public class EfRentalDal: EfEntityRepositoryBase<Rental, CarContext>, IRentalDal
     {
-        public List<RentalDetailDto> GetRentalDetails()
+        public List<RentalDetailDto> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
         {
             using (CarContext context = new CarContext())
             {
@@ -39,6 +39,14 @@ namespace DataAccess.EntityFramework
                              };
                 return result.ToList();
 
+            }
+        }
+        public int TotalRentedCar()
+        {
+            using (CarContext context = new CarContext())
+            {
+                var result = context.Brands.Count();
+                return result;
             }
         }
     }

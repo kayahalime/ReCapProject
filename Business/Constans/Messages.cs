@@ -24,5 +24,17 @@ namespace Business.Constans
         public static string SuccessfulLogin = "Giriş Başarılı";
         public static string UserAlreadyExists = "Kullanıcı Zaten Var";
         public static string AccessTokenCreated = "Erişim Token'ı oluşturuldu";
+
+        public static string RegisterSuccess = "Kayıt Başarılı";
+        public static string PasswordWrong = "Parola Hatalı";
+        public static string LoginSuccess = "Giriş Başarılı";
+        public static string UserExists = "Kullanıcı Zaten Var";
+        public static string TokenCreated = "Erişim Token'ı oluşturuldu";
+        public static string FailedCarImageAdd = "Araç Resmi Eklenemedi";
+
+        public static string ReturnedRental = "Araç Teslim Edildi";
+
+        public static string UserUpdated = "Kullanıcı Güncellendi";
+        public static string UserListed = "Kullanıcılar Listelendi";
     }
 }

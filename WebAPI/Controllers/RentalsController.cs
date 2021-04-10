@@ -1,5 +1,6 @@
 ﻿using Business.Abstarct;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,11 +14,35 @@ namespace WebAPI.Controllers
     [ApiController]
     public class RentalsController : ControllerBase
     {
-        IRentalService _rentalService;
-        public RentalsController(IRentalService rentalService)
+        private readonly IRentalService _rentalService;
+        private readonly IPaymentService _paymentService;
+        public RentalsController(IRentalService rentalService, IPaymentService paymentService)
         {
             _rentalService = rentalService;
+            _paymentService = paymentService;
 
+        }
+        [HttpGet("getrentalbycar")]
+        public IActionResult GetCarByCar(int id)
+        {
+
+            var result = _rentalService.GetRentalDetails(I => I.CarId == id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getrentalbycustomer")]
+        public IActionResult GetCarByCustomer(int id)
+        {
+
+            var result = _rentalService.GetRentalDetails(I => I.CustomerId == id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
         [HttpGet("getall")]
         public IActionResult GetAll()
@@ -29,6 +54,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        
         [HttpGet("getrentaldetail")]
         public IActionResult GetRentalDetails()
         {
@@ -59,5 +85,35 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("totalrentedcar")]
+        public IActionResult GetTotalRentedCar()
+        {
+            var result = _rentalService.TotalRentedCar();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("paymentadd")]
+        public IActionResult PaymentAdd(RentalPaymentDto rentalPaymentDto)
+        {
+            var paymentResult = _paymentService.MakePayment(rentalPaymentDto.FakeCreditCardModel);
+            if (!paymentResult.Success)
+            {
+                return BadRequest(paymentResult);
+            }
+            rentalPaymentDto.Rental.RentDate = DateTime.Now;
+            var result = _rentalService.Add(rentalPaymentDto.Rental);
+
+            if (result.Success)
+                return Ok(result);
+
+            return BadRequest(result.Message);
+        }
+
+
     }
+    
+
 }

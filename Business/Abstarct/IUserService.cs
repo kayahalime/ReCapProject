@@ -9,8 +9,14 @@ namespace Business.Abstarct
 {
     public interface IUserService
     {
-        List<OperationClaim> GetClaims(User user);
-        void Add(User user);
-        User GetByMail(string email);
+        IDataResult<List<OperationClaim>> GetClaims(User user);
+        IResult Add(User user);
+        IResult Update(User user);
+        IResult Delete(User user);
+        IDataResult<User> GetByMail(string email);
+        IResult ProfileUpdate(User user, string password);
+        IDataResult<List<User>> GetAll();
+        IDataResult<Findeks> GetUserFindeks(Findeks findeks);
+       
     }
 }
