@@ -36,5 +36,12 @@ namespace Business.Constans
 
         public static string UserUpdated = "Kullanıcı Güncellendi";
         public static string UserListed = "Kullanıcılar Listelendi";
+
+        public static string CreditCardAdded { get; internal set; }
+        public static string PaymentError { get; internal set; }
+        public static string PaymentSuccess { get; internal set; }
+        public static string FindeksError { get; internal set; }
+        public static string FindeksSuccess { get; internal set; }
+        public static string CustomerListed { get; internal set; }
     }
 }

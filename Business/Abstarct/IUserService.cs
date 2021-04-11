@@ -16,7 +16,7 @@ namespace Business.Abstarct
         IDataResult<User> GetByMail(string email);
         IResult ProfileUpdate(User user, string password);
         IDataResult<List<User>> GetAll();
-        IDataResult<Findeks> GetUserFindeks(Findeks findeks);
-       
+        IResult UserUpdateExists(string email, int id);
+
     }
 }

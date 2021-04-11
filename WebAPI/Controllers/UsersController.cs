@@ -75,17 +75,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("getuserfindeks")]
-        public IActionResult GetUserFindeks(Findeks findeks)
-        {
-            var result = _userService.GetUserFindeks(findeks);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
+     
 
         [HttpPost("updateprofile")]
         public IActionResult ProfileUpdate(UserForUpdateDto userForUpdateDto)

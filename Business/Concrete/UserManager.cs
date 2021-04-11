@@ -44,17 +44,16 @@ namespace Business.Concrete
             _userDal.Delete(user);
             return new SuccessResult();
         }
-        public IDataResult<Findeks> GetUserFindeks(Findeks findeks)
+        public IResult UserUpdateExists(string email, int id)
         {
-            Random rnd = new Random();
-            var userFindeks = new Findeks
+            var userExists = _userDal.Get(u => u.Email == email && u.UserId != id);
+            if (userExists != null)
             {
-                Tc = findeks.Tc,
-                DateYear = findeks.DateYear,
-                UserFindeks = rnd.Next(0, 1900)
-            };
-            return new SuccessDataResult<Findeks>(userFindeks);
+                return new ErrorResult(Messages.UserAlreadyExists);
+            }
+            return new SuccessResult();
         }
+
         public IResult ProfileUpdate(User user, string password)
         {
             byte[] passwordHash, passwordSalt;
